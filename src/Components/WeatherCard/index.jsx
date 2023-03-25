@@ -3,17 +3,10 @@ import * as WeatherIcons from "../../Assets/WeatherIcons"
 import useWeather from "../../Hooks/useWeather"
 
 function WeatherCard({ weather }) {
-<<<<<<< HEAD
-  const {weatherCodeToTitle,weatherCodeToIcon} = useWeather();
-  const { time, temperature, weathercode } = weather
-  return (
-    <div className="w-full sm:w-[16rem] glass-morph text-center px-2 py-8 rounded-2xl">
-=======
   const { weatherCodeToTitle, weatherCodeToIcon } = useWeather()
   const { time, temperature, weathercode } = weather
   return (
     <div className="w-[10rem] sm:w-[16rem] glass-morph text-center px-2 py-8 rounded-2xl">
->>>>>>> b8817c4 (+added Weather Card Component)
       <div className="w-full my-2">
         <img className="w-[8rem] mx-auto" src={weatherCodeToIcon(weathercode)} alt={`${WeatherIcons.SunnyDay}'s weather icon`} />
       </div>
