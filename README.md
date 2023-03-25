@@ -4,3 +4,16 @@
 
 - React.js
 - Tailwind.css
+- Open-Meteo API
+
+## Screenshots
+
+![Screenshot 1](ss-1.jpg)
+
+<br />
+
+![Screenshot 1](ss-2.jpg)
+
+<br />
+
+![Screenshot 1](ss-3.jpg)
