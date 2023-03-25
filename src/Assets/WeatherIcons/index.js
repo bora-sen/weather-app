@@ -1,0 +1,6 @@
+export { default as Cloudy } from "./wi-cloudy.svg"
+export { default as CloudyDay } from "./wi-day-cloudy.svg"
+export { default as SunnyDay } from "./wi-day-sunny.svg"
+export { default as Foggy } from "./wi-fog.svg"
+export { default as Snowy } from "./wi-snow.svg"
+export { default as Stormy } from "./wi-storm-showers.svg"
