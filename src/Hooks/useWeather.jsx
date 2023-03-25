@@ -1,14 +1,22 @@
 import axios from "axios"
 import cityLocations from "./cityLocations.json"
 import * as WeatherIcons from "../Assets/WeatherIcons"
+import { toast } from "react-hot-toast"
 
 export default function useWeather() {
   function getLocation(cityName) {
-    const sel_city = cityLocations.find((inp) => {
-      return inp.city.toUpperCase() === cityName.toUpperCase()
-    })
-    const loc = { lat: sel_city.lat, lng: sel_city.lng }
-    return loc
+    try {
+      const sel_city = cityLocations.find((inp) => {
+        return inp.city.toLocaleLowerCase() === cityName.toLocaleLowerCase()
+      })
+      const loc = { lat: sel_city.lat, lng: sel_city.lng }
+      toast.success("Hava Durumu Güncellendi")
+      return loc
+    } catch (error) {
+      if (error.message === "sel_city is undefined") {
+        toast.error("Girilen Şehir Bulunamadı")
+      }
+    }
   }
 
   function calculateDaily(dateArr, weatherCodeArr) {
@@ -24,58 +32,58 @@ export default function useWeather() {
   const weatherCodes = [
     {
       codes: [0, 1, 2, 3],
-      title: "Clear Sky",
-      icon: WeatherIcons.CloudyDay,
+      title: "Açık",
+      icon: WeatherIcons.Clear,
     },
     {
       codes: [45, 48],
-      title: "Foggy",
+      title: "Sisli",
       icon: WeatherIcons.Foggy,
     },
     {
       codes: [51, 52, 53],
       title: "Drizzle Light",
-      icon: WeatherIcons.SunnyDay,
+      icon: WeatherIcons.Clear,
     },
     {
       codes: [56, 57],
       title: "Freezing Drizzle",
-      icon: WeatherIcons.CloudyDay,
+      icon: WeatherIcons.Cloudy,
     },
     {
       codes: [61, 63, 65],
-      title: "Rainy",
-      icon: WeatherIcons.Stormy,
+      title: "Yağmurlu",
+      icon: WeatherIcons.Rain,
     },
     {
       codes: [66, 67],
       title: "Freezing Rainy",
-      icon: WeatherIcons.SunnyDay,
+      icon: WeatherIcons.Snow,
     },
     {
       codes: [71, 73, 75],
-      title: "Snow Fall",
-      icon: WeatherIcons.SunnyDay,
+      title: "Kar Yağışlı",
+      icon: WeatherIcons.Snow,
     },
     {
       codes: [77],
-      title: "Snow Grains",
-      icon: WeatherIcons.SunnyDay,
+      title: "Hafif Kar Yağışlı",
+      icon: WeatherIcons.Snow,
     },
     {
       codes: [80, 81, 82],
-      title: "Rain Showers",
-      icon: WeatherIcons.SunnyDay,
+      title: "Sağanak Yağmurlu",
+      icon: WeatherIcons.RainShowers,
     },
     {
       codes: [85, 86],
-      title: "Snow Showers",
-      icon: WeatherIcons.SunnyDay,
+      title: "Sağanak Kar Yağışlı",
+      icon: WeatherIcons.Snow,
     },
     {
       codes: [95, 96, 99],
-      title: "Thunderstorm",
-      icon: WeatherIcons.SunnyDay,
+      title: "Fırtınalı",
+      icon: WeatherIcons.Storm,
     },
   ]
 
@@ -123,7 +131,7 @@ export default function useWeather() {
 
     const newWeather = {
       today: {
-        time:"Today",
+        time: "Bugün",
         temperature: currentWeather.temperature,
         weathercode: currentWeather.weathercode,
       },
