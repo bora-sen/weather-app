@@ -12,8 +12,12 @@
 
 <br />
 
+### Light Mode
+
 ![Screenshot 1](ss-2.jpg)
 
 <br />
+
+### Dark Mode
 
 ![Screenshot 1](ss-3.jpg)
